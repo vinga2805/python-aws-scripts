@@ -15,13 +15,13 @@ for security_group_id in temp:
     SG = ec2.SecurityGroup(security_group_id)
     print(SG)
 #Now, we add the new rules using IPs from the CSV:
-    SG.authorize_ingress(IpProtocol="tcp",CidrIp="10.20.3.22/32",FromPort=33022,ToPort=33022)
-    SG.authorize_ingress(IpProtocol="tcp",CidrIp="10.250.1.116/32",FromPort=33022,ToPort=33022)
+    SG.authorize_ingress(IpProtocol="tcp",CidrIp="X.X.X.X/32",FromPort=33022,ToPort=33022)
+    SG.authorize_ingress(IpProtocol="tcp",CidrIp="X.X.X.X/32",FromPort=33022,ToPort=33022)
 # second, we remove all existing rules in the group:
-    SG.revoke_ingress(IpProtocol="tcp", CidrIp="10.20.3.22/32", FromPort=22, ToPort=22)
-    SG.revoke_ingress(IpProtocol="tcp", CidrIp="10.250.1.116/32", FromPort=22, ToPort=22)
+    SG.revoke_ingress(IpProtocol="tcp", CidrIp="X.X.X.X/32", FromPort=22, ToPort=22)
+    SG.revoke_ingress(IpProtocol="tcp", CidrIp="X.X.X.X/32", FromPort=22, ToPort=22)
 SG.revoke_ingress(IpPermissions=[{'FromPort': 22, 'IpProtocol': 'tcp','Ipv6Ranges': [{'CidrIpv6': '::/0',},],'ToPort': 22,},],)
 sg_group.close()
 
 
-aws ec2 revoke-security-group-ingress --group-id sg-0adbae209ed670662 --ip-permissions [{'IpProtocol': '-1','Ipv6Ranges': [{'CidrIpv6': '::/0',},],},]
+aws ec2 revoke-security-group-ingress --group-id XXXXXXXXX --ip-permissions [{'IpProtocol': '-1','Ipv6Ranges': [{'CidrIpv6': '::/0',},],},]
